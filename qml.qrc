@@ -4,5 +4,7 @@
         <file>button.png</file>
         <file>MyButton.qml</file>
         <file>Deal.qml</file>
+        <file>MyToolBar.qml</file>
+        <file>AllDeals.qml</file>
     </qresource>
 </RCC>
