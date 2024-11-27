@@ -6,5 +6,6 @@
         <file>Deal.qml</file>
         <file>MyToolBar.qml</file>
         <file>AllDeals.qml</file>
+        <file>datatest.js</file>
     </qresource>
 </RCC>

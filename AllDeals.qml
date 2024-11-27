@@ -6,7 +6,7 @@ import QtQuick.Controls 2.5
 Item {
     id:alldeals
     anchors.fill: parent
-    property real min_width :button_new_deal.width //+button_new_deal_form_current.width//+row.anchors.margins*3
+    property int min_width :button_new_deal.width+button_new_deal_form_current.width//+row.anchors.margins*3
 
     RowLayout {
       id: row
