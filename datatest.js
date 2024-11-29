@@ -1,9 +1,15 @@
 
-var modeltest = [ {art:"sfsdfdsfgdfgghhgfhs",
-                   cat:"ssafsadf"
+var modeltest = [ {inn:"1241235",
+                   art:"Art_1",
+                   cat:"Cat_1"
                  },
 
-                 {art:"jgkjhfjhkghjkhjkfhl",
-                  cat:"lhjkjh"
+                 {inn:"987697562",
+                  art:"Art_2",
+                  cat:"Cat_2"
+                 },
+                 {inn:"3253451",
+                  art:"Art_3",
+                  cat:"Cat_3"
                  }
                 ]

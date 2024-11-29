@@ -3,6 +3,7 @@ import QtQuick.Window 2.12
 import QtQuick.Controls 2.5
 import QtQuick.Layouts 1.3
 
+
 //import "qml.qrc:/AllDeals.qml" as Deals
 import "qrc:/datatest.js" as Datas
 ApplicationWindow {
@@ -16,79 +17,125 @@ ApplicationWindow {
 
     header:MyToolBar{ }
 
-  ColumnLayout {
+    ColumnLayout {
 
-      id: columnL
-      anchors.fill: parent
-      anchors.margins: 10
-
-
-      RowLayout {
-        id: row
-        x: 0
-        y: 45
-        width: 640
-        height: 40
-        Layout.alignment: Qt.AlignLeft | Qt.AlignTop
-
+        id: columnL
+        anchors.fill: parent
         anchors.margins: 10
-        spacing: 10
+
+
+        RowLayout {
+            id: row
+            x: 0
+            y: 45
+            width: 640
+            height: 40
+            Layout.alignment: Qt.AlignLeft | Qt.AlignTop
+
+            anchors.margins: 10
+            spacing: 10
 
 
 
-        Button{
-            id: button_new_deal
-            text: qsTr("New Deal")
-            onClicked: {
-                var comp=Qt.createComponent("Deal.qml");
-                if (comp.status===Component.Ready ) {
-                    var wind=comp.createObject(null);
-                    wind.show();
+            Button{
+                id: button_new_deal
+                text: qsTr("New Deal")
+                onClicked: {
+                    var comp=Qt.createComponent("Deal.qml");
+                    if (comp.status===Component.Ready ) {
+                        var wind=comp.createObject(null);
+                        wind.show();
+                    }
+                    //   Qt.quit()
                 }
-                //   Qt.quit()
             }
+
+            Button {
+                id: button_new_deal_form_current
+                text: qsTr("New Deal from Current")
+            }
+
         }
 
-        Button {
-            id: button_new_deal_form_current
-            text: qsTr("New Deal from Current")
-        }
 
-    }
-Rectangle{
-      ListView{
-         focus: true
-          footer: Rectangle {
-          width: 100
+        RowLayout {
+            x:parent.anchors.margins
+            width: parent
+            y:row.y+row.height+parent.anchors.margins
+            height: parent
+            clip: true
+            ListView{
+                focus: true
+                anchors.fill: parent
+                delegate: delegate
+                model: Datas.modeltest
+            }
 
           }
-      anchors.fill: parent
-      delegate: delegate
-      model: Datas.modeltest
-      }
-}
+    }
 
+    Component  {
+        id:delegate
 
+        RowLayout {
+            spacing: 0
+            Rectangle {
+                border.width: 1
+                border.color: "black"
+                width:100
+                height: 20
+                clip: true
+                color:(index%2  ===0 ? "#aaaaff":"#affafa")
+                TextEdit{
+                    text:modelData.inn
+                }
+            }
+            Rectangle {
+                border.width: 1
+                border.color: "black"
+                width:100
+                height:20
+                clip: true
+                color:(index%2  ===0 ? "#aaaaff":"#affafa")
+                TextEdit {
+                    text:modelData.art
+                }
+            }
 
-  }
-         Component {
-              id:delegate
-             Item{
-                  width: 100//columnL.width
-                  height: 30
-                      RowLayout {
+            Rectangle {
+                border.width: 1
+                border.color: "black"
+                width:100
+                height: 20
+                clip: true
+                color:(index%2  ===0 ? "#aaaaff":"#affafa")
+                TextEdit{
+                    text:modelData.cat
+                }
+            }
 
-                          Text{
-                               text:modelData.art
-
-                          }
-                          Text{
-                               text:modelData.cat
-                              }
-                         }
-                  }
-
+//                        Repeater{
+//                            model:Datas.modeltest
+//                            Rectangle {
+//                                border.width: 1
+//                                border.color: "black"
+//                                width:100
+//                                height:20
+//                                clip: true
+//                                TextEdit {
+//                                    text: index%2===0? modelData.art:modelData.cat
+//                                }
+//                            }
+//                        }
+//console.log("dfsd");
         }
+
+
+
+
+
+
+    }
 
 
 
