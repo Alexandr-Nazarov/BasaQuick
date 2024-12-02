@@ -1,7 +1,7 @@
 import QtQuick 2.12
 import QtQuick.Window 2.12
-import QtQuick.Controls 2.5
-import QtQuick.Layouts 1.3
+import QtQuick.Controls 2.12
+import QtQuick.Layouts 1.12
 
 
 //import "qml.qrc:/AllDeals.qml" as Deals
@@ -64,78 +64,82 @@ ApplicationWindow {
             y:row.y+row.height+parent.anchors.margins
             height: parent
             clip: true
-            ListView{
+            TableView{
+
+                id:table_view
                 focus: true
                 anchors.fill: parent
                 delegate: delegate
                 model: Datas.modeltest
+
             }
 
           }
     }
 
-    Component  {
+    Component {
         id:delegate
 
         RowLayout {
+
             spacing: 0
-            Rectangle {
+
+//            Repeater {
+//                                   model: Datas.headerModel
+//                                   width:200
+//                                   height: 20
+//                                       TextEdit {
+
+//                                           text: model.text  }
+
+//                      }
+
+            Rectangle{
                 border.width: 1
                 border.color: "black"
-                width:100
+                width:200
                 height: 20
-                clip: true
-                color:(index%2  ===0 ? "#aaaaff":"#affafa")
-                TextEdit{
-                    text:modelData.inn
-                }
-            }
-            Rectangle {
-                border.width: 1
-                border.color: "black"
-                width:100
-                height:20
                 clip: true
                 color:(index%2  ===0 ? "#aaaaff":"#affafa")
                 TextEdit {
-                    text:modelData.art
+                    id: headerEdit
+                    width: parent.width
+                    text:modelData.inn
+                    onTextChanged: {
+                                        modelData.setProperty(index, "inn", headerEdit.text)
+                                   }
+
                 }
             }
-
-            Rectangle {
+            Rectangle{
                 border.width: 1
                 border.color: "black"
-                width:100
+                width:200
                 height: 20
                 clip: true
                 color:(index%2  ===0 ? "#aaaaff":"#affafa")
-                TextEdit{
-                    text:modelData.cat
+                TextEdit {
+                    width: parent.width
+                    text:modelData.art
+
                 }
             }
+            Rectangle{
+                border.width: 1
+                border.color: "black"
+                width:200
+                height: 20
+                clip: true
+                color:(index%2  ===0 ? "#aaaaff":"#affafa")
+                TextEdit {
+                    width: parent.width
+                    text: modelData.cat
 
-//                        Repeater{
-//                            model:Datas.modeltest
-//                            Rectangle {
-//                                border.width: 1
-//                                border.color: "black"
-//                                width:100
-//                                height:20
-//                                clip: true
-//                                TextEdit {
-//                                    text: index%2===0? modelData.art:modelData.cat
-//                                }
-//                            }
-//                        }
-//console.log("dfsd");
+                }
+            }
         }
-
-
-
-
-
-
     }
+
 
 
 

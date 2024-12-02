@@ -13,3 +13,5 @@ var modeltest = [ {inn:"1241235",
                   cat:"Cat_3"
                  }
                 ]
+
+var headermodel= [{text:"inn"},{text:"ART"},{text:"CAT"}]
