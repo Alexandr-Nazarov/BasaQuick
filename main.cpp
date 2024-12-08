@@ -1,5 +1,8 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
+#include <QQuickStyle>
+
+#include "multicasttablemodel.h"
 
 
 int main(int argc, char *argv[])
@@ -8,6 +11,7 @@ int main(int argc, char *argv[])
 
     QGuiApplication app(argc, argv);
 
+  //  qmlRegisterType<MulticastTableModel>("MulticastTableModel",0,1,"MulticastTableModel");
 
     QQmlApplicationEngine engine;
     const QUrl url(QStringLiteral("qrc:/main.qml"));

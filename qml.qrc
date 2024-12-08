@@ -7,5 +7,7 @@
         <file>MyToolBar.qml</file>
         <file>AllDeals.qml</file>
         <file>datatest.js</file>
+        <file>ResizableTable.qml</file>
+        <file>ItemForTable.qml</file>
     </qresource>
 </RCC>

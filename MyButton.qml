@@ -1,6 +1,6 @@
 import QtQuick 2.0
 
-BorderImage {
+BorderImage{
 
     property alias text: txt.text
     id: mybutton

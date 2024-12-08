@@ -53,96 +53,19 @@ ApplicationWindow {
             Button {
                 id: button_new_deal_form_current
                 text: qsTr("New Deal from Current")
+                onClicked: console.log("new deal")
             }
 
         }
 
 
-        RowLayout {
+        ColumnLayout {
             x:parent.anchors.margins
-            width: parent
             y:row.y+row.height+parent.anchors.margins
-            height: parent
             clip: true
-            TableView{
-
-                id:table_view
-                focus: true
-                anchors.fill: parent
-                delegate: delegate
-                model: Datas.modeltest
-
-            }
-
-          }
-    }
-
-    Component {
-        id:delegate
-
-        RowLayout {
-
-            spacing: 0
-
-//            Repeater {
-//                                   model: Datas.headerModel
-//                                   width:200
-//                                   height: 20
-//                                       TextEdit {
-
-//                                           text: model.text  }
-
-//                      }
-
-            Rectangle{
-                border.width: 1
-                border.color: "black"
-                width:200
-                height: 20
-                clip: true
-                color:(index%2  ===0 ? "#aaaaff":"#affafa")
-                TextEdit {
-                    id: headerEdit
-                    width: parent.width
-                    text:modelData.inn
-                    onTextChanged: {
-                                        modelData.setProperty(index, "inn", headerEdit.text)
-                                   }
-
-                }
-            }
-            Rectangle{
-                border.width: 1
-                border.color: "black"
-                width:200
-                height: 20
-                clip: true
-                color:(index%2  ===0 ? "#aaaaff":"#affafa")
-                TextEdit {
-                    width: parent.width
-                    text:modelData.art
-
-                }
-            }
-            Rectangle{
-                border.width: 1
-                border.color: "black"
-                width:200
-                height: 20
-                clip: true
-                color:(index%2  ===0 ? "#aaaaff":"#affafa")
-                TextEdit {
-                    width: parent.width
-                    text: modelData.cat
-
-                }
-            }
+            ResizableTable{}
         }
     }
-
-
-
-
 
 }
 
